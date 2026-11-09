@@ -17,7 +17,7 @@
          HomeAssistant.Agent.Plugin.Sdk/build. -->
     <PropertyGroup>
         <AgentPlugin>true</AgentPlugin>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <PluginName>Windows Plugin</PluginName>
         <PluginDescription>Volume, audio devices, media, power, launchers, hotkeys and clipboard.</PluginDescription>
     </PropertyGroup>
