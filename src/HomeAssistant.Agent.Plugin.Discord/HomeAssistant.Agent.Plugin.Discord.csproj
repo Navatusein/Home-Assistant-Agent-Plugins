@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>HomeAssistant.Agent.Plugin.Discord</AssemblyName>
+        <RootNamespace>HomeAssistant.Agent.Plugin.Discord</RootNamespace>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <!-- Shown in the agent and in the plugin catalog; see
+         HomeAssistant.Agent.Plugin.Sdk/build. -->
+    <PropertyGroup>
+        <AgentPlugin>true</AgentPlugin>
+        <Version>1.0.0</Version>
+        <PluginName>Discord Plugin</PluginName>
+        <PluginDescription>Mute, deafen and voice channel of the Discord desktop app.</PluginDescription>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <!-- Compile against the logging abstraction, but neither copy nor embed
+           it: the host ships it (via HomeAssistant.Agent.Plugin.Base) and the
+           plugin's ILogger must resolve to that single shared copy. -->
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.9" ExcludeAssets="runtime" />
+      <PackageReference Include="StrEnum" Version="2.0.3" />
+    </ItemGroup>
+
+</Project>
