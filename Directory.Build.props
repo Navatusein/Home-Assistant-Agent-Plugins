@@ -1,0 +1,43 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>Navatusein</Authors>
+    <Company>Navatusein</Company>
+    <Product>Home Assistant Agent</Product>
+    <RepositoryUrl>https://github.com/Navatusein/Home-Assistant-Agent-Plugins</RepositoryUrl>
+  </PropertyGroup>
+
+  <!-- Defaults for the plugins of this repository (see the SDK targets). -->
+  <PropertyGroup>
+    <PluginAuthor>Navatusein</PluginAuthor>
+    <PluginHomepage>$(RepositoryUrl)</PluginHomepage>
+    <PluginRepository>$(RepositoryUrl)</PluginRepository>
+  </PropertyGroup>
+
+  <!-- Where the plugin API (Plugin.Base, Connector, the SDK build targets)
+       comes from:
+
+         source   the agent's repository checked out next to this one: local
+                  development (..\Home-Assistant-Agent) and CI (.agent, see
+                  plugin-release.yml). API changes are picked up at once, and
+                  plugins deploy into that agent's Plugins folder.
+         package  the HomeAssistant.Agent.Plugin.Sdk NuGet package, as for any
+                  third-party plugin.
+
+       Source wins when the agent is found. Force either one with
+       -p:AgentRepoPath=<path> or -p:AgentApi=package. -->
+  <PropertyGroup Condition="'$(AgentRepoPath)' == '' And '$(AgentApi)' != 'package'">
+    <AgentRepoPath Condition="Exists('$(MSBuildThisFileDirectory).agent\src\HomeAssistant.Agent.Plugin.Base')">$(MSBuildThisFileDirectory).agent\</AgentRepoPath>
+    <AgentRepoPath Condition="'$(AgentRepoPath)' == '' And Exists('$(MSBuildThisFileDirectory)..\Home-Assistant-Agent\src\HomeAssistant.Agent.Plugin.Base')">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\Home-Assistant-Agent\'))</AgentRepoPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AgentRepoPath Condition="'$(AgentRepoPath)' != '' And !HasTrailingSlash('$(AgentRepoPath)')">$(AgentRepoPath)\</AgentRepoPath>
+    <AgentApi Condition="'$(AgentApi)' == '' And '$(AgentRepoPath)' != ''">source</AgentApi>
+    <AgentApi Condition="'$(AgentApi)' == ''">package</AgentApi>
+
+    <!-- The SDK package version is the plugin API version. -->
+    <AgentSdkVersion Condition="'$(AgentSdkVersion)' == ''">2.0.*</AgentSdkVersion>
+  </PropertyGroup>
+
+</Project>

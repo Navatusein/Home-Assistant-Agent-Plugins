@@ -1,0 +1,35 @@
+<Project>
+
+  <!-- The plugin API, from the agent's sources or from the SDK package (see
+       Directory.Build.props). Either way the plugin compiles against
+       Plugin.Base and Connector but never ships them: the agent provides them
+       at run time. -->
+
+  <!-- source: the SDK build logic straight from the agent's repository. The
+       package imports the same file itself. -->
+  <Import Project="$(AgentRepoPath)src\HomeAssistant.Agent.Plugin.Sdk\build\HomeAssistant.Agent.Plugin.Sdk.targets"
+          Condition="'$(AgentPlugin)' == 'true' And '$(AgentApi)' == 'source'" />
+
+  <ItemGroup Condition="'$(AgentPlugin)' == 'true' And '$(AgentApi)' == 'source'">
+    <ProjectReference Include="$(AgentRepoPath)src\HomeAssistant.Agent.Plugin.Base\HomeAssistant.Agent.Plugin.Base.csproj" Private="false" ExcludeAssets="runtime" />
+    <ProjectReference Include="$(AgentRepoPath)src\HomeAssistant.Connector\HomeAssistant.Connector.csproj" Private="false" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(AgentPlugin)' == 'true' And '$(AgentApi)' == 'package'">
+    <PackageReference Include="HomeAssistant.Agent.Plugin.Sdk" Version="$(AgentSdkVersion)" />
+  </ItemGroup>
+
+  <!-- source: deploys the plugin into the local agent's Plugins directory, so
+       the agent picks it up at startup. -->
+  <PropertyGroup Condition="'$(AgentApi)' == 'source'">
+    <AgentHostOutput Condition="'$(AgentHostOutput)' == ''">$(AgentRepoPath)src\HomeAssistant.Agent\bin\$(Configuration)\net10.0-windows10.0.19041.0</AgentHostOutput>
+  </PropertyGroup>
+
+  <Target Name="CopyToAgentPlugins" AfterTargets="Build"
+          Condition="'$(AgentPlugin)' == 'true' And '$(AgentHostOutput)' != ''">
+    <Copy SourceFiles="$(TargetPath)"
+          DestinationFolder="$(AgentHostOutput)\Plugins"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>
