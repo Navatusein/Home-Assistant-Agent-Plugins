@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>HomeAssistant.Agent.Plugin.Teams</AssemblyName>
+        <RootNamespace>HomeAssistant.Agent.Plugin.Teams</RootNamespace>
+        <EnableDynamicLoading>true</EnableDynamicLoading>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <!-- Shown in the agent and in the plugin catalog; see
+         HomeAssistant.Agent.Plugin.Sdk/build. -->
+    <PropertyGroup>
+        <AgentPlugin>true</AgentPlugin>
+        <Version>1.0.0</Version>
+        <PluginName>Microsoft Teams Plugin</PluginName>
+        <PluginDescription>Mute, camera and meeting state of Microsoft Teams.</PluginDescription>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Compile against the logging abstraction, but neither copy nor embed
+             it: the host ships it (via HomeAssistant.Agent.Plugin.Base) and the
+             plugin's ILogger must resolve to that single shared copy. -->
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.9" ExcludeAssets="runtime" />
+    </ItemGroup>
+
+</Project>
