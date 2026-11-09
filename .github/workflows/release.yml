@@ -1,0 +1,37 @@
+# Releases one plugin: push a tag like plugin/discord/v1.2.0 (the folder name
+# after "HomeAssistant.Agent.Plugin.", any case). The plugin is built, attached
+# to a GitHub release and listed in this repository's catalog (index.json in
+# the "index" release).
+name: Release
+
+on:
+  push:
+    tags: [ 'plugin/*/v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    outputs:
+      path: ${{ steps.find.outputs.path }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find the project
+        id: find
+        run: |
+          name=$(echo "$GITHUB_REF_NAME" | cut -d/ -f2)
+          dir=$(find src -maxdepth 1 -type d -iname "HomeAssistant.Agent.Plugin.$name" | head -n 1)
+          if [ -z "$dir" ]; then echo "No plugin folder for '$name'"; exit 1; fi
+          echo "path=$dir/$(basename "$dir").csproj" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: project
+    uses: Navatusein/Home-Assistant-Agent/.github/workflows/plugin-release.yml@main
+    with:
+      project: ${{ needs.project.outputs.path }}
+      # Several plugins share the repository: none of them is "the latest".
+      latest: false
