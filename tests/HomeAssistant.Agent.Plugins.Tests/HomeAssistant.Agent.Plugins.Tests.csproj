@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- The Windows plugin targets the WinRT media APIs of Windows 10
+             2004 (10.0.19041). -->
+        <TargetFramework>net10.0-windows10.0.19041</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+        <PackageReference Include="xunit" Version="2.9.3" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.Windows\HomeAssistant.Agent.Plugin.Windows.csproj" />
+        <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.Logitech\HomeAssistant.Agent.Plugin.Logitech.csproj" />
+        <!-- The plugins leave the API to the host; here the tests are the
+             host. Needs the agent's sources (see Directory.Build.props): the
+             SDK package carries reference assemblies only. -->
+        <ProjectReference Include="$(AgentRepoPath)src\HomeAssistant.Agent.Plugin.Base\HomeAssistant.Agent.Plugin.Base.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+    </ItemGroup>
+
+    <Target Name="RequireAgentSources" BeforeTargets="Restore;_GenerateRestoreGraph;Build" Condition="'$(AgentApi)' != 'source'">
+        <Error Text="The tests need the agent's sources: check out Home-Assistant-Agent next to this repository or pass -p:AgentRepoPath=&lt;path&gt;." />
+    </Target>
+
+</Project>
