@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeAssistant.Agent.Plugins.Tests", "tests\HomeAssistant.Agent.Plugins.Tests\HomeAssistant.Agent.Plugins.Tests.csproj", "{74D2652E-8E48-47EB-8A7C-66264C66A284}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeAssistant.Agent.Plugin.MacOS", "src\HomeAssistant.Agent.Plugin.MacOS\HomeAssistant.Agent.Plugin.MacOS.csproj", "{DB0FE7EF-457F-4D4D-A48D-0B959232448D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,18 @@ Global
 		{74D2652E-8E48-47EB-8A7C-66264C66A284}.Release|x64.Build.0 = Release|Any CPU
 		{74D2652E-8E48-47EB-8A7C-66264C66A284}.Release|x86.ActiveCfg = Release|Any CPU
 		{74D2652E-8E48-47EB-8A7C-66264C66A284}.Release|x86.Build.0 = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|x64.Build.0 = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Debug|x86.Build.0 = Debug|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|x64.ActiveCfg = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|x64.Build.0 = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|x86.ActiveCfg = Release|Any CPU
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +126,6 @@ Global
 		{40CAA23F-98E3-4E57-965E-B8765D88DC60} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{658B5AA8-1C3A-4336-BCEF-E951428E3248} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{74D2652E-8E48-47EB-8A7C-66264C66A284} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
+		{DB0FE7EF-457F-4D4D-A48D-0B959232448D} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 # Home Assistant Agent Plugins
 
 The official plugins of [Home Assistant Agent](https://github.com/Navatusein/Home-Assistant-Agent):
-Windows, Discord, Microsoft Teams, OBS Studio and Logitech G HUB.
+Windows, macOS, Discord, Microsoft Teams, OBS Studio and Logitech G HUB.
 
 ## Building
 
