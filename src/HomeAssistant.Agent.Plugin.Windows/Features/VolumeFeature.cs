@@ -25,7 +25,7 @@ internal sealed class VolumeFeature : PluginFeature
             Max = 100,
             Step = 1,
             UnitOfMeasurement = "%",
-            DefaultState = 0,
+            PublishDefaultState = false,
             ChangeStateHandler = Volume_ChangeStateHandler
         };
 
@@ -35,7 +35,7 @@ internal sealed class VolumeFeature : PluginFeature
             UniqueId = "windows_volume_mute",
             BaseTopic = "windows/volume/mute",
             Icon = "mdi:volume-mute",
-            DefaultState = false,
+            PublishDefaultState = false,
             ChangeStateHandler = Mute_ChangeStateHandler
         };
     }

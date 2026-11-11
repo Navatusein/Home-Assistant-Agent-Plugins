@@ -106,7 +106,8 @@ internal sealed class AudioDevicesFeature : PluginFeature
             BaseTopic = $"windows/audio-devices/{kind}",
             Icon = icon,
             Options = [..devices.Select(d => d.DisplayName)],
-            DefaultState = devices[0].DisplayName,
+            // No DefaultState: OnEnableAsync publishes the real device right
+            // away, a default would show up for a moment before it.
             ChangeStateHandler = displayName => DeviceSelect_ChangeStateHandler(flow, devices, displayName)
         };
     }

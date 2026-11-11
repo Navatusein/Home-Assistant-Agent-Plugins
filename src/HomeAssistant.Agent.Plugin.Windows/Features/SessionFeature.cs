@@ -16,7 +16,7 @@ internal sealed class SessionFeature : PluginFeature
         UniqueId = "windows_session",
         BaseTopic = "windows/session",
         DeviceClass = "lock",
-        DefaultState = false
+        PublishDefaultState = false
     };
 
     private SessionMonitor? _monitor;
