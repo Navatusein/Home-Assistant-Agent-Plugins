@@ -22,6 +22,7 @@
         <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.Logitech\HomeAssistant.Agent.Plugin.Logitech.csproj" />
         <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.MacOS\HomeAssistant.Agent.Plugin.MacOS.csproj" />
         <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.Sendspin\HomeAssistant.Agent.Plugin.Sendspin.csproj" />
+        <ProjectReference Include="..\..\src\HomeAssistant.Agent.Plugin.Ntfy\HomeAssistant.Agent.Plugin.Ntfy.csproj" />
         <!-- The plugins leave the API to the host; here the tests are the
              host. Needs the agent's sources (see Directory.Build.props): the
              SDK package carries reference assemblies only. -->
