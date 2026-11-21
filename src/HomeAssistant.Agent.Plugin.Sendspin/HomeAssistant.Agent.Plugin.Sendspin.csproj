@@ -14,7 +14,7 @@
          HomeAssistant.Agent.Plugin.Sdk/build. -->
     <PropertyGroup>
         <AgentPlugin>true</AgentPlugin>
-        <Version>0.1.0</Version>
+        <Version>1.0.0</Version>
         <PluginName>Sendspin Plugin</PluginName>
         <PluginDescription>Plays Music Assistant on this computer as a Sendspin player.</PluginDescription>
     </PropertyGroup>
