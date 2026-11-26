@@ -37,7 +37,7 @@
     <AgentApi Condition="'$(AgentApi)' == ''">package</AgentApi>
 
     <!-- The SDK package version is the plugin API version. -->
-    <AgentSdkVersion Condition="'$(AgentSdkVersion)' == ''">2.3.*</AgentSdkVersion>
+    <AgentSdkVersion Condition="'$(AgentSdkVersion)' == ''">2.4.*</AgentSdkVersion>
   </PropertyGroup>
 
 </Project>
